@@ -1,20 +1,20 @@
-CLASS zcl_runv_inn_number DEFINITION
-  PUBLIC
-  CREATE PUBLIC .
+class ZCL_RUNV_INN_NUMBER definition
+  public
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    TYPES:
-      ty_t_coefficients TYPE STANDARD TABLE OF i WITH DEFAULT KEY .
+  types:
+    ty_t_coefficients TYPE STANDARD TABLE OF i WITH DEFAULT KEY .
 
-    METHODS constructor
-      IMPORTING
-        !iv_number TYPE string
-      RAISING
-        zcx_runv_exception .
-    METHODS is_valid
-      RETURNING
-        VALUE(rv_val) TYPE boole_d .
+  methods CONSTRUCTOR
+    importing
+      !IV_NUMBER type STRING
+    raising
+      ZCX_RUNV_EXCEPTION .
+  methods IS_VALID
+    returning
+      value(RV_VAL) type BOOLE_D .
   PROTECTED SECTION.
   PRIVATE SECTION.
 
@@ -34,7 +34,6 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
 
 
   METHOD constructor.
-
 
     mv_number = iv_number.
     CONDENSE mv_number.
@@ -60,22 +59,24 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
                             msgno = 002 ).
     ENDIF.
 
-
   ENDMETHOD.
 
 
   METHOD control_number.
 
+    rv_val = REDUCE i(
+               INIT n = 0
+               FOR coef IN it_coefficients
+               INDEX INTO lv_idx
+               LET lv_pos = lv_idx - 1
+               IN NEXT n = n + coef * mv_number+lv_pos(1) ).
 
-    rv_val = REDUCE i( INIT n = 0 FOR coef IN it_coefficients INDEX INTO lv_idx LET lv_pos = lv_idx - 1 IN NEXT n = n + coef * mv_number+lv_pos(1) ).
     rv_val = ( ( rv_val MOD 11 ) MOD 10 ).
-
 
   ENDMETHOD.
 
 
   METHOD is_valid.
-
 
     CASE mv_number_len.
       WHEN 10.
@@ -108,7 +109,6 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
         ENDIF.
 
     ENDCASE.
-
 
   ENDMETHOD.
 ENDCLASS.

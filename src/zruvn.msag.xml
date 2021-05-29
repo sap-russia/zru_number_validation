@@ -11,11 +11,6 @@
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>ZRUVN</ARBGB>
-     <MSGNR>000</MSGNR>
-    </T100>
-    <T100>
-     <SPRSL>E</SPRSL>
-     <ARBGB>ZRUVN</ARBGB>
      <MSGNR>001</MSGNR>
      <TEXT>ИНН должен содержать только цифры</TEXT>
     </T100>
