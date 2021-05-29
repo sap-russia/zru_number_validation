@@ -249,7 +249,7 @@
       "ignoreFunctionModuleName": false
     },
     "line_length": {
-      "length": 120,
+      "length": 130,
     },
     "line_only_punc": {
       "ignoreExceptions": true
