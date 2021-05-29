@@ -1,20 +1,20 @@
-class ZCL_RUNV_INN_NUMBER definition
-  public
-  create public .
+CLASS zcl_runv_inn_number DEFINITION
+  PUBLIC
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  types:
-    ty_t_coefficients TYPE STANDARD TABLE OF i WITH DEFAULT KEY .
+    TYPES:
+      ty_t_coefficients TYPE STANDARD TABLE OF i WITH DEFAULT KEY .
 
-  methods CONSTRUCTOR
-    importing
-      !IV_NUMBER type STRING
-    raising
-      ZCX_RUNV_EXCEPTION .
-  methods IS_VALID
-    returning
-      value(RV_VAL) type BOOLE_D .
+    METHODS constructor
+      IMPORTING
+        !iv_number TYPE string
+      RAISING
+        zcx_runv_exception .
+    METHODS is_valid
+      RETURNING
+        VALUE(rv_val) TYPE boole_d .
   PROTECTED SECTION.
   PRIVATE SECTION.
 
