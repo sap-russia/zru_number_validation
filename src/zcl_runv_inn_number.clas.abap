@@ -74,7 +74,7 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
       WHEN 10.
 
         DATA(lv_n10) = substring( val = mv_number
-                                  off = strlen( mv_number ) - 1
+                                  off = mv_number_len - 1
                                   len = 1 ).
 
         DATA(lt_coefficients_10) = VALUE ty_t_coefficients( ( 2 ) ( 4 ) ( 10 ) ( 3 ) ( 5 ) ( 9 ) ( 4 ) ( 6 ) ( 8 ) ).
@@ -86,11 +86,11 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
       WHEN 12.
 
         DATA(lv_n11) = substring( val = mv_number
-                                  off = strlen( mv_number ) - 2
+                                  off = mv_number_len - 2
                                   len = 1 ).
 
         DATA(lv_n12) = substring( val = mv_number
-                                  off = strlen( mv_number ) - 1
+                                  off = mv_number_len - 1
                                   len = 1 ).
 
         DATA(lt_coefficients_11) = VALUE ty_t_coefficients( ( 7 ) ( 2 ) ( 4 ) ( 10 ) ( 3 ) ( 5 ) ( 9 ) ( 4 ) ( 6 ) ( 8 ) ).

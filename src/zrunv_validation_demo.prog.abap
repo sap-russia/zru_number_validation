@@ -14,7 +14,6 @@ START-OF-SELECTION.
     WRITE `INN: False`.
   ENDIF.
 
-
 * SNILS
   TRY.
       IF NEW zcl_runv_snils_number( `112-233-445 95` )->is_valid( ).

@@ -30,20 +30,18 @@ CLASS ltc_runv_inn IMPLEMENTATION.
                                         msg = 'Testing is_valid meth, length 12' ).
 
 *   other length
-    TRY.
-        lv_val = NEW zcl_runv_inn_number( `1234` )->is_valid( ).
-        cl_abap_unit_assert=>fail( msg = 'Testing is_valid meth, other length' ).
+    lv_val = NEW zcl_runv_inn_number( `1234` )->is_valid( ).
 
-      CATCH zcx_runv_exception INTO DATA(lx_e).
-    ENDTRY.
+    cl_abap_unit_assert=>assert_equals( act = lv_val
+                                        exp = abap_false
+                                        msg = 'Testing is_valid meth, other length' ).
 
-*   inn with test (not valid)
-    TRY.
-        lv_val = NEW zcl_runv_inn_number( `test1234` )->is_valid( ).
-        cl_abap_unit_assert=>fail( msg = 'Testing is_valid meth, inn with test' ).
+*   inn with char (not valid)
+    lv_val = NEW zcl_runv_inn_number( `test1234` )->is_valid( ).
 
-      CATCH zcx_runv_exception INTO lx_e.
-    ENDTRY.
+    cl_abap_unit_assert=>assert_equals( act = lv_val
+                                        exp = abap_false
+                                        msg = 'Testing is_valid meth, inn with char'  ).
 
   ENDMETHOD.
 

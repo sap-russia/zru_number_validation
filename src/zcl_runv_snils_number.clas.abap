@@ -81,7 +81,7 @@ CLASS ZCL_RUNV_SNILS_NUMBER IMPLEMENTATION.
     ENDIF.
 
     DATA(lv_n) = CONV i( substring( val = mv_number
-                                    off = strlen( mv_number ) - 2
+                                    off = mv_number_len - 2
                                     len = 2 ) ).
 
     IF lv_n = control_number( ).
