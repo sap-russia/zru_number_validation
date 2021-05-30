@@ -36,40 +36,17 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
   METHOD constructor.
 
     mv_number = iv_number.
-    CONDENSE mv_number.
-
-    IF mv_number CN '0123456789'.
-      MESSAGE e001(zruvn) INTO DATA(lv_message).
-
-      RAISE EXCEPTION TYPE zcx_runv_exception
-        EXPORTING
-          textid = VALUE #( msgid = 'ZRUVN'
-                            msgno = 001 ).
-    ENDIF.
-
-    mv_number_len = strlen( mv_number ).
-
-    IF mv_number_len <> 10 AND mv_number_len <> 12.
-
-      MESSAGE e002(zruvn) INTO lv_message.
-
-      RAISE EXCEPTION TYPE zcx_runv_exception
-        EXPORTING
-          textid = VALUE #( msgid = 'ZRUVN'
-                            msgno = 002 ).
-    ENDIF.
 
   ENDMETHOD.
 
 
   METHOD control_number.
 
-    rv_val = REDUCE i(
-               INIT n = 0
-               FOR coef IN it_coefficients
-               INDEX INTO lv_idx
-               LET lv_pos = lv_idx - 1
-               IN NEXT n = n + coef * mv_number+lv_pos(1) ).
+    rv_val = REDUCE i( INIT n = 0
+                       FOR coef IN it_coefficients
+                       INDEX INTO lv_idx
+                       LET lv_pos = lv_idx - 1
+                       IN NEXT n = n + coef * mv_number+lv_pos(1) ).
 
     rv_val = ( ( rv_val MOD 11 ) MOD 10 ).
 
@@ -77,6 +54,18 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
 
 
   METHOD is_valid.
+
+    mv_number = replace( val = mv_number sub  = ` ` with = `` occ = 0 ).
+
+    IF mv_number CN '0123456789'.
+      RETURN.
+    ENDIF.
+
+    mv_number_len = strlen( mv_number ).
+
+    IF mv_number_len <> 10 AND mv_number_len <> 12.
+      RETURN.
+    ENDIF.
 
     CASE mv_number_len.
       WHEN 10.

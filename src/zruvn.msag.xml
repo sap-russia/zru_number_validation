@@ -12,13 +12,7 @@
      <SPRSL>E</SPRSL>
      <ARBGB>ZRUVN</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>ИНН должен содержать только цифры</TEXT>
-    </T100>
-    <T100>
-     <SPRSL>E</SPRSL>
-     <ARBGB>ZRUVN</ARBGB>
-     <MSGNR>002</MSGNR>
-     <TEXT>Длина ИНН может быть только 10 или 12</TEXT>
+     <TEXT>Проверка контрольного числа СНИЛС проводится только для номеров &gt; 1001998</TEXT>
     </T100>
    </T100>
   </asx:values>
