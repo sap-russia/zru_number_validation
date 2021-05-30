@@ -4,9 +4,6 @@ CLASS zcl_runv_snils_number DEFINITION
 
   PUBLIC SECTION.
 
-    TYPES:
-      ty_t_coefficients TYPE STANDARD TABLE OF i WITH DEFAULT KEY .
-
     METHODS constructor
       IMPORTING
         !iv_number TYPE string
@@ -34,11 +31,18 @@ CLASS ZCL_RUNV_SNILS_NUMBER IMPLEMENTATION.
   METHOD constructor.
 
     mv_number = iv_number.
-    mv_number = replace( val = mv_number sub  = ` ` with = `` occ = 0 ).
-    mv_number = replace( val = mv_number sub  = `-` with = `` occ = 0 ).
+
+    mv_number = replace( val = mv_number
+                         sub  = ` `
+                         with = ``
+                         occ = 0 ).
+
+    mv_number = replace( val = mv_number
+                         sub  = `-`
+                         with = ``
+                         occ = 0 ).
 
     mv_number_len = strlen( mv_number ).
-
     DATA(lv_number) = mv_number(9).
     SHIFT lv_number LEFT DELETING LEADING `0`.
 

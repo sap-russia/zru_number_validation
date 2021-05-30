@@ -55,7 +55,10 @@ CLASS ZCL_RUNV_INN_NUMBER IMPLEMENTATION.
 
   METHOD is_valid.
 
-    mv_number = replace( val = mv_number sub  = ` ` with = `` occ = 0 ).
+    mv_number = replace( val = mv_number
+                         sub  = ` `
+                         with = ``
+                         occ = 0 ).
 
     IF mv_number CN '0123456789'.
       RETURN.
