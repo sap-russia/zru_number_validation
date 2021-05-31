@@ -4,6 +4,8 @@ CLASS zcl_runv_inn_number DEFINITION
 
   PUBLIC SECTION.
 
+    INTERFACES zif_runv_number .
+
     TYPES:
       ty_t_coefficients TYPE STANDARD TABLE OF i WITH DEFAULT KEY .
 
