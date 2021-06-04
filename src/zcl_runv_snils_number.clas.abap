@@ -49,11 +49,11 @@ CLASS ZCL_RUNV_SNILS_NUMBER IMPLEMENTATION.
     SHIFT lv_number LEFT DELETING LEADING `0`.
 
     IF CONV i( lv_number ) <= 1001998.
-      MESSAGE e001(zruvn) INTO DATA(lv_message).
+      MESSAGE e001(zrunv) INTO DATA(lv_message).
 
       RAISE EXCEPTION TYPE zcx_runv_exception
         EXPORTING
-          textid = VALUE #( msgid = 'ZRUVN'
+          textid = VALUE #( msgid = 'ZRUNV'
                             msgno = 001 ).
     ENDIF.
 
