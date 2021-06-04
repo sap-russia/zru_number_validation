@@ -48,7 +48,8 @@ ENDCLASS.
 
 CLASS ltc_runv_snils DEFINITION FOR TESTING
   DURATION SHORT
-  RISK LEVEL HARMLESS.
+  RISK LEVEL HARMLESS
+  FINAL.
 
   PRIVATE SECTION.
 
@@ -59,33 +60,29 @@ ENDCLASS.       "ltc_Runv_Snils
 CLASS ltc_runv_snils IMPLEMENTATION.
 
   METHOD is_valid.
-
-*   whith `-`
-    DATA(lv_val) = NEW zcl_runv_snils_number( `112-233-445 95` )->is_valid( ).
-
-    cl_abap_unit_assert=>assert_equals( act = lv_val
-                                        exp = abap_true
-                                        msg = 'Testing is_valid meth, whith -' ).
-
-*   whithout `-`
-    lv_val = NEW zcl_runv_snils_number( `11223344595` )->is_valid( ).
-    cl_abap_unit_assert=>assert_equals( act = lv_val
-                                        exp = abap_true
-                                        msg = 'Testing is_valid meth, whithout -' ).
-*  less 1001998 whith `-`
     TRY.
+*       whith `-`
+        DATA(lv_val) = NEW zcl_runv_snils_number( `112-233-445 95` )->is_valid( ).
+
+        cl_abap_unit_assert=>assert_equals( act = lv_val
+                                            exp = abap_true
+                                            msg = 'Testing is_valid meth, whith -' ).
+
+*       whithout `-`
+        lv_val = NEW zcl_runv_snils_number( `11223344595` )->is_valid( ).
+        cl_abap_unit_assert=>assert_equals( act = lv_val
+                                            exp = abap_true
+                                            msg = 'Testing is_valid meth, whithout -' ).
+*      less 1001998 whith `-`
         lv_val = NEW zcl_runv_snils_number( `001-001-998` )->is_valid( ).
         cl_abap_unit_assert=>fail( msg = 'Testing is_valid meth, less 1001998 whith -' ).
 
-      CATCH zcx_runv_exception INTO DATA(lx_e).
-    ENDTRY.
+*       less 1001998 whithout `-`
 
-*  less 1001998 whithout `-`
-    TRY.
         lv_val = NEW zcl_runv_snils_number( `001001998` )->is_valid( ).
         cl_abap_unit_assert=>fail( msg = 'Testing is_valid meth, less 1001998 whithout -' ).
 
-      CATCH zcx_runv_exception INTO lx_e.
+      CATCH zcx_runv_exception INTO DATA(lx_e).
     ENDTRY.
 
   ENDMETHOD.

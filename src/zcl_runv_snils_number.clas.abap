@@ -4,8 +4,6 @@ CLASS zcl_runv_snils_number DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_runv_number .
-
     METHODS constructor
       IMPORTING
         !iv_number TYPE string

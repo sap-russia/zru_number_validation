@@ -3,14 +3,14 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <T100A>
-    <ARBGB>ZRUVN</ARBGB>
+    <ARBGB>ZRUNV</ARBGB>
     <MASTERLANG>E</MASTERLANG>
     <STEXT>Number validation for Russia</STEXT>
    </T100A>
    <T100>
     <T100>
      <SPRSL>E</SPRSL>
-     <ARBGB>ZRUVN</ARBGB>
+     <ARBGB>ZRUNV</ARBGB>
      <MSGNR>001</MSGNR>
      <TEXT>Проверка контрольного числа СНИЛС проводится только для номеров &gt; 1001998</TEXT>
     </T100>
